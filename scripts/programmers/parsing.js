@@ -42,10 +42,10 @@ async function parseData() {
 
 async function makeData(origin) {
   const { problem_description, problemId, level, result_message, division, language_extension, title, runtime, memory, code } = origin;
-  const directory = `프로그래머스/${level}/${problemId}. ${convertSingleCharToDoubleChar(title)}`;
+  const directory = `programmers/${level}/${addLeadingZeros(problemId, 6)}-${removeSpecialChar(title)}`;
   const levelWithLv = `${level}`.includes('lv') ? level : `lv${level}`.replace('lv', 'level ');
   const message = `[${levelWithLv}] Title: ${title}, Time: ${runtime}, Memory: ${memory} -BaekjoonHub`;
-  const fileName = `${convertSingleCharToDoubleChar(title)}.${language_extension}`;
+  const fileName = `${addLeadingZeros(problemId, 6)}-${removeSpecialChar(title)}.${language_extension}`;
   const dateInfo = getDateString(new Date(Date.now()));
   // prettier-ignore
   const readme =

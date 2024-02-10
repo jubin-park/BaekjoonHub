@@ -83,9 +83,9 @@ async function parseData() {
 
 async function makeData(origin) {
   const { link, problemId, level, extension, title, runtime, memory, code, length,submissionTime } = origin;
-  const directory = `SWEA/${level}/${problemId}. ${convertSingleCharToDoubleChar(title)}`;
+  const directory = `swexpertacademy/${level}/${addLeadingZeros(problemId, 5)}-${removeSpecialChar(title)}`;
   const message = `[${level}] Title: ${title}, Time: ${runtime}, Memory: ${memory} -BaekjoonHub`;
-  const fileName = `${convertSingleCharToDoubleChar(title)}.${extension}`;
+  const fileName = `${addLeadingZeros(problemId, 5)}-${removeSpecialChar(title)}.${extension}`;
   const dateInfo = submissionTime ?? getDateString(new Date(Date.now()));
   // prettier-ignore
   const readme =

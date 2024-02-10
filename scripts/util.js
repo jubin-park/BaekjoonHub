@@ -144,6 +144,43 @@ function convertSingleCharToDoubleChar(text) {
   });
 }
 
+function removeSpecialChar(text) {
+  const map = {
+    '!': '',
+    '%': '',
+    '&': '',
+    '(': '',
+    ')': '',
+    '*': '',
+    '+': '',
+    ',': '',
+    '-': '-',
+    '.': '',
+    '/': '',
+    ':': '',
+    ';': '',
+    '<': '',
+    '=': '',
+    '>': '',
+    '?': '',
+    '@': '',
+    '[': '',
+    '\\': '',
+    ']': '',
+    '^': '',
+    '_': '-',
+    '`': '',
+    '{': '',
+    '|': '',
+    '}': '',
+    '~': '',
+    ' ': '-',
+  };
+  return text.replace(/[!%&()*+,\-./:;<=>?@\[\\\]^_`{|}~ ]/g, function (m) {
+    return map[m];
+  });
+}
+
 /**
  * base64로 문자열을 base64로 인코딩하여 반환합니다.
  * @param {string} str - base64로 인코딩할 문자열
@@ -275,4 +312,13 @@ if (typeof __DEV__ !== "undefined") {
 
 function log(...args) {
   if (debug) console.log(...args)
+}
+
+function addLeadingZeros(num, maxTitlePrefixLength) {
+  var numStr = num.toString();
+  var len = numStr.length;
+  if (len < maxTitlePrefixLength) {
+    return '0'.repeat(maxTitlePrefixLength - len) + numStr;
+  }
+  return numStr;
 }
